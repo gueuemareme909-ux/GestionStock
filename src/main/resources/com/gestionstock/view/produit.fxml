@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.ColumnConstraints?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.gestionstock.controller.ProduitController">
+
+    <top>
+        <Label text="Gestion de Stock - Produits et Catégories"
+               style="-fx-font-size: 22px; -fx-font-weight: bold;"
+               BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="15.0" top="15.0" />
+            </padding>
+        </Label>
+    </top>
+
+    <center>
+        <VBox spacing="20.0" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets bottom="15.0" left="15.0" right="15.0" top="10.0" />
+            </padding>
+
+            <!-- SECTION PRODUITS -->
+            <VBox spacing="10.0" style="-fx-border-color: #2196F3; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px;">
+
+                <Label text="📦 Gestion des Produits" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #2196F3;" />
+
+                <GridPane hgap="10.0" vgap="10.0">
+                    <columnConstraints>
+                        <ColumnConstraints minWidth="100" />
+                        <ColumnConstraints minWidth="200" />
+                        <ColumnConstraints minWidth="100" />
+                        <ColumnConstraints minWidth="150" />
+                    </columnConstraints>
+
+                    <Label text="Nom :" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+                    <TextField fx:id="txtNom" GridPane.rowIndex="0" GridPane.columnIndex="1" promptText="Nom du produit" />
+
+                    <Label text="Prix (Fcfa) :" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+                    <TextField fx:id="txtPrix" GridPane.rowIndex="0" GridPane.columnIndex="3" promptText="0.00" />
+
+                    <Label text="Quantité :" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+                    <TextField fx:id="txtQuantite" GridPane.rowIndex="1" GridPane.columnIndex="1" promptText="Stock" />
+
+                    <Label text="Catégorie :" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+                    <ComboBox fx:id="comboCategorie" GridPane.rowIndex="1" GridPane.columnIndex="3" promptText="Choisir..." />
+                </GridPane>
+
+                <HBox spacing="10.0">
+                    <Button fx:id="btnAjouter" text="➕ Ajouter" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" />
+                    <Button fx:id="btnModifier" text="✏️ Modifier" style="-fx-background-color: #2196F3; -fx-text-fill: white;" />
+                    <Button fx:id="btnSupprimer" text="🗑️ Supprimer" style="-fx-background-color: #f44336; -fx-text-fill: white;" />
+                    <Button fx:id="btnNouveau" text="🆕 Nouveau" />
+                </HBox>
+
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <TextField fx:id="txtRecherche" promptText="🔍 Rechercher un produit..." prefWidth="250" />
+                    <Button fx:id="btnRechercher" text="Rechercher" style="-fx-background-color: #FF9800; -fx-text-fill: white;" />
+                </HBox>
+
+                <TableView fx:id="tableProduits" prefHeight="200">
+                    <columns>
+                        <TableColumn fx:id="colId" text="ID" prefWidth="50" />
+                        <TableColumn fx:id="colNom" text="Nom" prefWidth="200" />
+                        <TableColumn fx:id="colPrix" text="Prix (Fcfa)" prefWidth="100" />
+                        <TableColumn fx:id="colQuantite" text="Qté" prefWidth="60" />
+                        <TableColumn fx:id="colCategorie" text="Catégorie" prefWidth="150" />
+                    </columns>
+                </TableView>
+            </VBox>
+
+            <!-- SECTION CATÉGORIES -->
+            <VBox spacing="10.0" style="-fx-border-color: #9C27B0; -fx-border-width: 2px; -fx-border-radius: 5px; -fx-padding: 10px;">
+
+                <Label text="📁 Gestion des Catégories" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #9C27B0;" />
+
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <Label text="Nom :" />
+                    <TextField fx:id="txtNomCategorie" promptText="Nom de la catégorie" prefWidth="200" />
+                    <Button fx:id="btnAjouterCategorie" text="➕ Ajouter" style="-fx-background-color: #4CAF50; -fx-text-fill: white;" />
+                    <Button fx:id="btnModifierCategorie" text="✏️ Modifier" style="-fx-background-color: #2196F3; -fx-text-fill: white;" />
+                    <Button fx:id="btnSupprimerCategorie" text="🗑️ Supprimer" style="-fx-background-color: #f44336; -fx-text-fill: white;" />
+                </HBox>
+
+                <TableView fx:id="tableCategories" prefHeight="150">
+                    <columns>
+                        <TableColumn fx:id="colIdCategorie" text="ID" prefWidth="60" />
+                        <TableColumn fx:id="colLibelleCategorie" text="Nom de la catégorie" prefWidth="300" />
+                    </columns>
+                </TableView>
+            </VBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>
